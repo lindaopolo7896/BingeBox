@@ -24,14 +24,11 @@ BingeBox is a modern movie discovery web app that allows users to explore trendi
 1. Clone the repository:
 git clone https://github.com/your-username/bingebox.git
 
-2. Navigate into project:
-cd bingebox
+2. Navigate into project:cd bingebox
 
-3. Install Dependencies:
-npm install
+3. Install Dependencies:npm install
 
-4. Start Development Server:
-npm run dev
+4. Start Development Server:npm run dev
 
 
 ---
