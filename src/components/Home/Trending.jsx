@@ -1,10 +1,20 @@
-import React from "react";
+import MoviesSeries from "../main/MoviesSeries";
+import useFetch from "../../customs/useFetch";
+import { fetchAllUpcoming, fetchUpcomingMovies } from "../../apis/Movies";
 
 function Trending() {
+  const { data, isLoading, isError, error } = useFetch(
+    ["upcoming"],
+    fetchAllUpcoming,
+  );
   return (
-    <div>
-      <p>Trending</p>
-    </div>
+    <MoviesSeries
+      data={data}
+      isError={isError}
+      isLoading={isLoading}
+      error={error}
+      label="upcoming "
+    />
   );
 }
 

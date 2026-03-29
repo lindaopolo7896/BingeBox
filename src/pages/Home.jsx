@@ -1,14 +1,21 @@
 import React from "react";
-import TrendingHero from "../components/Home/TrendingHero";
+
 import { Outlet } from "react-router-dom";
 import MiniNav from "../components/Home/MiniNav";
+
+import Hero from "../components/Home/Hero";
 
 function Home() {
   return (
     <div>
-      <TrendingHero />
+      <Hero />
       <div className="bg-[#030712] py-10">
-        <MiniNav />
+        <MiniNav
+          popular="/"
+          topRated="/top-rated"
+          upcoming="/upcoming"
+          watchList="/watch-list"
+        />
         <Outlet />
       </div>
     </div>
