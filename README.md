@@ -1,16 +1,56 @@
-# React + Vite
+# BingeBox
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+BingeBox is a modern movie discovery web app that allows users to explore trending, popular, and top-rated movies using real-time data from TMDB. Built with React, it focuses on clean UI, smooth interactions, and scalable frontend architecture.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Browse Trending, Popular, and Top Rated movies and series
+- Dynamic movie data from TMDB API
+- Movie ratings displayed with star system
+- Hero slideshow for trending movies
+- Glassmorphism UI design
+- Optimized data fetching with React Query
+- Persistent watchlist using localStorage
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React (Vite)
+- Tailwind CSS
+- React Query (@tanstack/react-query)
+- TMDB API
 
-## Expanding the ESLint configuration
+## ⚙️ Installation
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. Clone the repository:
+git clone https://github.com/your-username/bingebox.git
+
+2. Navigate into project:cd bingebox
+
+3. Install Dependencies:npm install
+
+4. Start Development Server:npm run dev
+
+
+---
+
+##  Environment Variables
+Create a `.env` file in the root directory and add:
+VITE_TMDB_API_KEY=your_api_key_here
+
+## Live Demo
+
+Coming soon...
+
+## What I Learned
+
+- Managing server state using React Query
+- Structuring scalable React applications
+- Working with external APIs (TMDB)
+- Creating reusable components and hooks
+
+## Future Improvements
+
+- Add user authentication and account management
+- Persist watchlist using a backend database
+- Expand movie details (cast, trailers, reviews)
+
