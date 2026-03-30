@@ -1,16 +1,15 @@
 import { useState } from "react";
 
-function GenreList({ hook, onSelectGenre }) {
-  const { data, isLoading, isError, error } = hook();
+function GenreList({ data, isLoading, isError, error, onSelectGenre }) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   if (isLoading) return <p>Fetching genres...</p>;
   if (isError) return <p>{error.message}</p>;
 
-  const genres = data?.genres || [];
+  const genres = data || [];
 
   return (
-    <div className="flex gap-4 flex-wrap">
+    <div className="flex gap-4 flex-wrap pt-10 px-10">
       {genres.map((genre, index) => (
         <button
           key={genre.id}

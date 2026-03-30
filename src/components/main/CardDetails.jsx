@@ -1,6 +1,7 @@
 import { IoIosCloseCircle } from "react-icons/io";
 import { fetchWatchProviders } from "../../apis/Movies";
 import { useState, useEffect } from "react";
+import WatchListBtn from "../Home/WatchListBtn";
 function CardDetails({
   id,
   media,
@@ -59,23 +60,23 @@ function CardDetails({
             {release ? release.slice(0, 4) : "N/A"}
           </p>
 
-          <p className="mt-4">{description}</p>
-
-          <p className="mt-2 text-[#030712] font-semibold">
-            Popularity:{" "}
-            <span className="text-white font-medium">
-              {popularity.toFixed(0)}%
+          <p className="mt-2 text-[#67E8F9] font-semibold">
+            Rating:{" "}
+            <span className="text-[#FFCD29] font-medium">
+              {rating.toFixed(0)}/10
             </span>
           </p>
+
+          <p className="mt-4 text-[#D1D5DB]">{description}</p>
 
           <p className="font-medium">
             <span className="text-[#67E8F9] font-bold">{recommended}</span>{" "}
             people recommend watching
           </p>
           <div>
-            <h1>Watch ON</h1>
+            <h1 className="text-[#67E8F9] underline">Watch ON:</h1>
 
-            <div className="flex gap-4 mt-4">
+            <div className="flex gap-4 mt-4 flex-wrap">
               {providers.length === 0 ? (
                 <p className="text-red-500"> Not Available</p>
               ) : (
@@ -84,15 +85,13 @@ function CardDetails({
                     key={p.provider_id}
                     src={`https://image.tmdb.org/t/p/w200${p.logo_path}`}
                     alt={p.provider_name}
-                    className="h-15 rounded-lg shadow shadow-[#67E8F9]/40 "
+                    className="h-15 rounded-lg shadow shadow-[#67E8F9]/40 hover:scale-105 transition-all duration-300 ease-in-out "
                   />
                 ))
               )}
             </div>
           </div>
-          <button className="mt-4 w-1/2 font-bold bg-[#67E8F9] text-black px-4 py-2 rounded-full">
-            Add to WatchList
-          </button>
+          <WatchListBtn />
         </div>
       </div>
     </div>

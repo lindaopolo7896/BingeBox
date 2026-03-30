@@ -4,15 +4,25 @@ const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 const BASE_URL = "https://api.themoviedb.org/3";
 
 async function fetchFromTMDB(endpoint, params = "") {
-  const response = await fetch(
-    `${BASE_URL}${endpoint}?api_key=${API_KEY}&${params}`,
-  );
+  const url =
+    `${BASE_URL}${endpoint}?api_key=${API_KEY}` + (params ? `&${params}` : "");
+  const response = await fetch(url);
 
   if (!response.ok) {
     throw new Error(`Failed to fetch: ${endpoint}`);
   }
 
-  return response.json();
+  const data = await response.json();
+
+  if (data.results) {
+    return data.results.map(normalizeItem);
+  }
+
+  if (data.genres) {
+    return data.genres;
+  }
+
+  return data;
 }
 
 async function fetchFromTMDBCombined(moviesEndPoint, seriesEndPoint) {
@@ -28,10 +38,10 @@ async function fetchFromTMDBCombined(moviesEndPoint, seriesEndPoint) {
   const movieData = await moviesRes.json();
   const seriesData = await seriesRes.json();
 
-  const movies = movieData.results || [];
-  const series = seriesData.results || [];
+  const movies = (movieData.results || []).map(normalizeItem);
+  const series = (seriesData.results || []).map(normalizeItem);
 
-  return [...movies, ...series].map(normalizeItem);
+  return [...movies, ...series];
 }
 
 // HOME APIS
@@ -97,7 +107,10 @@ export async function fetchMovieGenre() {
 }
 
 export async function fetchMovieGenreById(genreId) {
-  return fetchFromTMDB("/discover/movie", `with_genres=${genreId}`);
+  return fetchFromTMDB(
+    "/discover/movie",
+    `with_genres=${genreId}&sort_by=popularity.desc`,
+  );
 }
 
 // SERIES APIS
@@ -122,5 +135,15 @@ export async function fetchSerieGenre() {
 }
 
 export async function fetchSeriesGenreById(genreId) {
-  return fetchFromTMDB("/discover/tv", `with_genres=${genreId}`);
+  return fetchFromTMDB(
+    "/discover/tv",
+    `with_genres=${genreId}&sort_by=popularity.desc`,
+  );
+}
+
+// SEARCH
+export async function searchMulti(query) {
+  if (!query) return [];
+
+  return fetchFromTMDB("/search/multi", `query=${encodeURIComponent(query)}`);
 }

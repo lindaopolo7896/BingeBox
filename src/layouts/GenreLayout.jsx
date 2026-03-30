@@ -2,7 +2,7 @@ import React from "react";
 
 function GenreLayout({ children }) {
   return (
-    <div className="flex flex-col  gap-3 w-1/2 border border-white/10 p-6 rounded-xl">
+    <div className="flex flex-col pt-15  gap-3 w-full bg-[#030712] ">
       {children}
     </div>
   );

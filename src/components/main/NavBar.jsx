@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 import { IoMdClose } from "react-icons/io";
 import { IoMdMenu } from "react-icons/io";
 import { useState } from "react";
+import Search from "./Search";
 
 function NavBar() {
   const [show, setShow] = useState(false);
@@ -36,7 +37,10 @@ function NavBar() {
       }`}
     >
       <div className="flex items-center justify-center gap-3">
-        <IoMdMenu onClick={handleShow} className="flex md:hidden text-3xl" />
+        <IoMdMenu
+          onClick={handleShow}
+          className="flex md:hidden text-3xl text-white"
+        />
         <h1 className="font-bold text-[#67E8F9] lg:text-xl">BINGEBOX</h1>
       </div>
       <nav
@@ -77,13 +81,7 @@ function NavBar() {
           Series
         </NavLink>
       </nav>
-      <input
-        type="search"
-        name=""
-        id=""
-        placeholder="Search movies..."
-        className="bg-white w-full max-w-1/2 lg:max-w-1/4 px-4 rounded-full py-2"
-      />
+      <Search />
     </div>
   );
 }

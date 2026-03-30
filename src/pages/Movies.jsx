@@ -1,11 +1,11 @@
-import Genres from "./Genres";
+import Genres from "../components/Genres/Genres";
 import {
   fetchMovieGenre,
   fetchMovieGenreById,
   fetchTrendingMovies,
-} from "../../apis/Movies";
+} from "../apis/Movies";
 
-function MovieGenres() {
+function Movies() {
   return (
     <Genres
       fetchGenre={fetchMovieGenre}
@@ -16,4 +16,4 @@ function MovieGenres() {
   );
 }
 
-export default MovieGenres;
+export default Movies;

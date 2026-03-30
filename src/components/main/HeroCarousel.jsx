@@ -3,6 +3,8 @@ import { FaStar } from "react-icons/fa6";
 import { TbRating18Plus } from "react-icons/tb";
 import useFetch from "../../customs/useFetch";
 import Carousel from "./Carousel";
+import WatchListBtn from "../Home/WatchListBtn";
+import { addToWatchList } from "../../utils/watchlist";
 
 function HeroCarousel({ queryKey, fetchFunction, titleKey = "title" }) {
   const { data, isLoading, isError, error } = useFetch(
@@ -12,7 +14,7 @@ function HeroCarousel({ queryKey, fetchFunction, titleKey = "title" }) {
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const items = useMemo(() => data?.results || [], [data]);
+  const items = useMemo(() => data || [], [data]);
 
   useEffect(() => {
     if (!items.length) return;
@@ -29,7 +31,7 @@ function HeroCarousel({ queryKey, fetchFunction, titleKey = "title" }) {
   if (!items.length) return <p>No data found</p>;
 
   const currentItem = items[currentIndex];
-  const imageUrl = `https://image.tmdb.org/t/p/original/${currentItem?.backdrop_path}`;
+  const imageUrl = `https://image.tmdb.org/t/p/original/${currentItem?.backdrop}`;
   const rating = Math.floor(currentItem?.vote_average / 2);
 
   return (
@@ -39,15 +41,15 @@ function HeroCarousel({ queryKey, fetchFunction, titleKey = "title" }) {
     >
       <div className="absolute  inset-0 bg-black/80 z-10" />
 
-      <div className="relative z-20 px-5 md:px-10 flex flex-col gap-4">
-        <div className="text-[#D1D5DB] text-xl flex gap-10 font-semibold">
-          <div className="bg-white/10 backdrop-blur-md px-10 py-2 border border-white/20 rounded-full">
+      <div className="relative z-20 px-5 md:px-10 flex flex-col gap-2 md:gap-4">
+        <div className="text-[#D1D5DB] text-xl flex gap-3 md:gap-10 font-semibold">
+          <div className="bg-white/10 backdrop-blur-md flex items-center justify-center  px-3 md:px-10 md:py-2 border border-white/20 text-sm md:text-lg rounded-full">
             {currentItem?.media_type}
           </div>
 
           <div>
             {!currentItem?.adult ? (
-              <p className="flex items-center gap-2 bg-white/10 backdrop-blur-md px-10 py-2 border border-white/20 rounded-full">
+              <p className="bg-white/10 backdrop-blur-md flex items-center justify-center  px-3 md:px-10 md:py-2 border border-white/20 text-sm md:text-lg rounded-full">
                 Family
               </p>
             ) : (
@@ -78,9 +80,7 @@ function HeroCarousel({ queryKey, fetchFunction, titleKey = "title" }) {
           {currentItem?.overview}
         </p>
 
-        <button className="w-full max-w-sm bg-[#67E8F9] font-bold text-lg p-2 rounded-full cursor-pointer hover:bg-[#A5F3FC] transition-all duration-300 ease-in-out">
-          Add to WatchList
-        </button>
+        <WatchListBtn onClick={() => addToWatchList(currentItem)} />
       </div>
 
       <Carousel
@@ -89,9 +89,9 @@ function HeroCarousel({ queryKey, fetchFunction, titleKey = "title" }) {
         setCurrentIndex={setCurrentIndex}
         renderItem={(item, position) => (
           <img
-            src={`https://image.tmdb.org/t/p/w300/${item.poster_path}`}
+            src={`https://image.tmdb.org/t/p/w300/${item.poster}`}
             alt={item[titleKey]}
-            className={`w-35 h-48 object-cover rounded-xl border border-white shadow-lg ${
+            className={`w-20 h-24 sm:w-20 sm:h-36 md:w-32 md:h-44 lg:w-36 lg:h-48 object-cover rounded-xl border border-white shadow-lg ${
               position === 0 ? "shadow-[#67E8F9]/40 shadow-lg" : ""
             }`}
           />
