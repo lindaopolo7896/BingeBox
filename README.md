@@ -39,7 +39,7 @@ VITE_TMDB_API_KEY=your_api_key_here
 
 ## Live Demo
 
-[..](https://binge-box-chi.vercel.app/)
+[LiveLink](https://binge-box-chi.vercel.app/)
 
 ## What I Learned
 
