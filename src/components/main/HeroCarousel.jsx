@@ -36,7 +36,7 @@ function HeroCarousel({ queryKey, fetchFunction, titleKey = "title" }) {
 
   return (
     <div
-      className="h-screen pt-35 bg-cover bg-center  flex  flex-col gap-30"
+      className="relative min-h-screen pt-35 bg-cover bg-center  flex  flex-col gap-10"
       style={{ backgroundImage: `url(${imageUrl})` }}
     >
       <div className="absolute  inset-0 bg-black/80 z-10" />

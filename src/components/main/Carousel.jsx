@@ -33,7 +33,7 @@ function Carousel({
   }, []);
 
   return (
-    <div className="w-full flex justify-center items-center z-30  md:py-10">
+    <div className="w-full  h-38  md:h-64 flex justify-center items-center z-30 md:py-10">
       <div className="relative flex items-center justify-center w-full max-w-5xl">
         {items.map((item, index) => {
           let position = index - currentIndex;

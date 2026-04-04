@@ -31,13 +31,13 @@ function CardDetails({
   return (
     <div
       className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 inset-0 w-full h-screen 
-      md:w-7/8 lg:w-3/5 md:h-7/8 lg:h-3/4 z-50 flex justify-center bg-cover bg-center rounded-xl "
+       lg:w-3/5  lg:h-7/8 z-50 flex justify-center bg-cover bg-center md:rounded-xl "
       style={{
         backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url(${image})`,
       }}
     >
       <div
-        className="absolute  inset-0 bg-white/10 backdrop-blur-md rounded-xl"
+        className="absolute  inset-0 bg-white/10 backdrop-blur-md lg:rounded-xl"
         onClick={onClose}
       />
 
@@ -46,7 +46,7 @@ function CardDetails({
           onClick={onClose}
           className="absolute  top-4 text-[40px] right-4 cursor-pointer hover:text-white/80 transition-all duration-300 ease-in-out"
         />
-        <div className="w-full">
+        <div className="w-full lg:w-1/2 ">
           <img
             src={image}
             alt={title}
