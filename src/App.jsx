@@ -18,29 +18,31 @@ import { motion } from "framer-motion";
 
 function App() {
   return (
-    <div className="bg-[#030712] min-h-screen">
+    <div className="bg-[#030712] ">
       <NavBar />
-      <Routes>
-        <Route path="/movie/:id" element={<MovieDetails />} />
-        <Route path="/tv/:id" element={<MovieDetails />} />
-        <Route path="/search" element={<SearchPage />} />
-        {/* Home  */}
-        <Route path="/" element={<Home />}>
-          <Route index element={<Popular />} />
-          <Route path="top-rated" element={<TopRated />} />
-          <Route path="upcoming" element={<Trending />} />
-          <Route path="watch-list" element={<WatchList />} />
-        </Route>
+      <div className="min-h-screen">
+        <Routes>
+          <Route path="/movie/:id" element={<MovieDetails />} />
+          <Route path="/tv/:id" element={<MovieDetails />} />
+          <Route path="/search" element={<SearchPage />} />
+          {/* Home  */}
+          <Route path="/" element={<Home />}>
+            <Route index element={<Popular />} />
+            <Route path="top-rated" element={<TopRated />} />
+            <Route path="upcoming" element={<Trending />} />
+            <Route path="watch-list" element={<WatchList />} />
+          </Route>
 
-        <Route path="/movies" element={<Movies />}></Route>
+          <Route path="/movies" element={<Movies />}></Route>
 
-        {/* Series */}
-        <Route path="/series" element={<Series />}>
-          <Route index element={<PopularSeries />} />
-          <Route path="top-rated" element={<TopRatedSeries />} />
-          <Route path="upcoming" element={<UpcomingSeries />} />
-        </Route>
-      </Routes>
+          {/* Series */}
+          <Route path="/series" element={<Series />}>
+            <Route index element={<PopularSeries />} />
+            <Route path="top-rated" element={<TopRatedSeries />} />
+            <Route path="upcoming" element={<UpcomingSeries />} />
+          </Route>
+        </Routes>
+      </div>
       <Footer />
     </div>
   );

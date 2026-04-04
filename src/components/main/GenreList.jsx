@@ -19,7 +19,7 @@ function GenreList({ data, isLoading, isError, error, onSelectGenre }) {
           }}
           className={`px-4 py-1 text-sm rounded-full transition-all ${
             currentIndex === index
-              ? "bg-cyan-400 text-black"
+              ? "bg-[#67E8F9] text-black"
               : "bg-white/10 text-white"
           }`}
         >
