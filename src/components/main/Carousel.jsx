@@ -16,13 +16,13 @@ function Carousel({
 
       if (width < 640) {
         setSpacing(80);
-        setRange(1); // center + 2 sides = 3 posters
+        setRange(1);
       } else if (width < 1024) {
         setSpacing(110);
-        setRange(2); // 5 posters
+        setRange(2);
       } else {
         setSpacing(150);
-        setRange(3); // 7 posters
+        setRange(3);
       }
     };
 
