@@ -14,10 +14,11 @@ import MovieDetails from "./components/Home/MovieDetails";
 import Movies from "./pages/Movies";
 import SearchPage from "./pages/SearchPage";
 import WatchList from "./pages/WatchList";
+import { motion } from "framer-motion";
 
 function App() {
   return (
-    <div>
+    <div className="bg-[#030712] min-h-screen">
       <NavBar />
       <Routes>
         <Route path="/movie/:id" element={<MovieDetails />} />

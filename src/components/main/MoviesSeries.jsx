@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import CardDisplay from "./CardDisplay";
 import CardDetails from "./CardDetails";
+import { motion } from "framer-motion";
 
 function MoviesSeries({ data, isLoading, isError, error, label = "movies" }) {
   const [selectedItem, setSelectedItem] = useState(null);
@@ -10,22 +11,49 @@ function MoviesSeries({ data, isLoading, isError, error, label = "movies" }) {
 
   const items = data || [];
 
+  const container = {
+    hidden: {},
+    visible: {
+      transition: {
+        staggerChildren: 0.15,
+      },
+    },
+  };
+
+  const item = {
+    hidden: {
+      opacity: 0,
+      y: 40,
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+    },
+  };
+
   return (
     <>
-      <div className="grid-layout">
+      <motion.div
+        variants={container}
+        initial="hidden"
+        animate="visible"
+        className="grid-layout"
+      >
         {items.map((item) => (
-          <CardDisplay
-            key={`${item.media_type}-${item.id}`}
-            id={item.id}
-            image={item.poster}
-            title={item.title}
-            release={item.date}
-            media={item.media_type}
-            item={item}
-            onPlay={() => setSelectedItem(item)}
-          />
+          <motion.div variants={item}>
+            <CardDisplay
+              key={`${item.media_type}-${item.id}`}
+              id={item.id}
+              image={item.poster}
+              title={item.title}
+              release={item.date}
+              media={item.media_type}
+              item={item}
+              onPlay={() => setSelectedItem(item)}
+            />
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
 
       {selectedItem && (
         <CardDetails
