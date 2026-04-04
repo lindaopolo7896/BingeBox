@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import CardDisplay from "./CardDisplay";
 import CardDetails from "./CardDetails";
 import { motion } from "framer-motion";
+import Loader from "./Loader";
 
 function MoviesSeries({ data, isLoading, isError, error, label = "movies" }) {
   const [selectedItem, setSelectedItem] = useState(null);
 
-  if (isLoading) return <p>Fetching {label}...</p>;
+  if (isLoading) return <Loader />;
   if (isError) return <p>{error.message}</p>;
 
   const items = data || [];
@@ -32,7 +33,7 @@ function MoviesSeries({ data, isLoading, isError, error, label = "movies" }) {
   };
 
   return (
-    <>
+    <div>
       <motion.div
         variants={container}
         initial="hidden"
@@ -69,7 +70,7 @@ function MoviesSeries({ data, isLoading, isError, error, label = "movies" }) {
           onClose={() => setSelectedItem(null)}
         />
       )}
-    </>
+    </div>
   );
 }
 
